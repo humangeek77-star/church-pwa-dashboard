@@ -6,13 +6,28 @@
   <meta content="mobile_tab" name="shell-type"/>
   <title>Chesterfield Community Church - PWA Dashboard</title>
   <meta name="description" content="Chesterfield Community Church PWA Dashboard - Sunday gatherings, ministries, prayer requests, and community fellowship."/>
-  <link rel="manifest" href="./manifest.json"/>
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/manifest.json"/>
   <meta name="theme-color" content="#00288e"/>
+  
+  <!-- Mobile & iOS PWA Specific Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
   <meta name="apple-mobile-web-app-title" content="Church PWA"/>
-  <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png"/>
-  <link rel="icon" type="image/png" href="./favicon.png"/>
+  <meta name="application-name" content="Church PWA"/>
+  
+  <!-- Apple Touch Icons for iPhone / iPad Home Screen -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192.png"/>
+  <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512.png"/>
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"/>
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
 
   <!-- Google Fonts & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -149,16 +164,16 @@
               <span class="material-symbols-outlined text-sapphire-deep text-[15px]">location_on</span>
               <span class="text-[11px] font-bold uppercase tracking-wider text-sapphire-deep truncate">Chesterfield, IN</span>
             </div>
-            <span class="font-headline font-bold text-[15px] text-text-primary leading-tight truncate">Chesterfield Community Church</span>
+            <span class="font-headline font-bold text-[14px] text-text-primary leading-tight truncate">Chesterfield Community Church</span>
           </div>
         </div>
 
         <!-- Header Actions -->
         <div class="flex items-center gap-1.5 shrink-0">
-          <!-- Install Button (visible when supported) -->
-          <button id="header-install-btn" onclick="installPWA()" aria-label="Install App" title="Install App to Home Screen" class="hidden h-9 px-2.5 rounded-full bg-water-mist hover:bg-sapphire-deep text-sapphire-deep hover:text-white transition-all text-xs font-semibold items-center gap-1 border border-blue-200/60" type="button">
-            <span class="material-symbols-outlined text-[17px]">download</span>
-            <span class="hidden sm:inline">Install</span>
+          <!-- Install Button (always accessible to mobile visitors) -->
+          <button id="header-install-btn" onclick="openInstallModal()" aria-label="Install App" title="Install App to Home Screen" class="h-9 px-3 rounded-full bg-water-mist hover:bg-sapphire-deep text-sapphire-deep hover:text-white transition-all text-xs font-bold flex items-center gap-1.5 border border-blue-200/80 shadow-xs active:scale-95" type="button">
+            <span class="material-symbols-outlined text-[18px]">install_mobile</span>
+            <span>Install</span>
           </button>
 
           <!-- Notification Bell -->
@@ -179,6 +194,26 @@
 
     <!-- Main Content Feed -->
     <main class="flex-1 w-full pt-20 pb-28 px-4 space-y-4">
+
+      <!-- Prominent Install App Banner Card for Mobile (hidden automatically if app is already installed in standalone mode) -->
+      <div id="mobile-install-card" class="w-full bg-gradient-to-r from-sapphire-deep via-primary to-royal-vibrant text-white rounded-2xl p-3.5 shadow-md flex items-center justify-between gap-3 border border-white/10">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/20 p-1 shadow-xs">
+            <img src="./assets/icons/icon-192.png" alt="Church App Icon" class="w-full h-full object-contain rounded-lg"/>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <div class="flex items-center gap-1.5">
+              <span class="font-headline font-bold text-[14px] text-white leading-tight">Install Church App</span>
+              <span class="bg-amber-400 text-slate-900 text-[9px] font-extrabold px-1.5 py-0.5 rounded-full uppercase tracking-wider">Tap to Add</span>
+            </div>
+            <span class="text-[12px] text-blue-100/90 truncate">Add icon to your phone home screen</span>
+          </div>
+        </div>
+        <button onclick="openInstallModal()" class="shrink-0 bg-white hover:bg-amber-50 text-sapphire-deep px-3.5 py-2 rounded-full font-headline font-bold text-xs shadow-md active:scale-95 transition-all flex items-center gap-1" type="button">
+          <span class="material-symbols-outlined text-[16px]">add_to_home_screen</span>
+          <span>Install</span>
+        </button>
+      </div>
 
       <!-- Urgent Weather / Worship Announcement Pill -->
       <div class="w-full bg-gradient-to-r from-flame-glow to-amber-100/70 border border-amber-200/80 rounded-2xl p-3.5 flex items-center justify-between gap-3 shadow-xs active:scale-[0.99] transition-transform cursor-pointer" onclick="toggleAlertDetails()">
@@ -535,13 +570,118 @@
           <span class="material-symbols-outlined text-[22px]">favorite</span>
           <span class="text-[11px] font-semibold">Prayer</span>
         </button>
-        <button aria-label="More" onclick="setActiveTab('more')" class="nav-tab flex flex-col items-center justify-center gap-1 min-w-[56px] h-full text-on-surface-variant hover:text-royal-vibrant transition-colors" data-path="more" type="button">
-          <span class="material-symbols-outlined text-[22px]">menu</span>
-          <span class="text-[11px] font-semibold">More</span>
+        <button aria-label="Install" onclick="openInstallModal()" class="nav-tab flex flex-col items-center justify-center gap-1 min-w-[56px] h-full text-on-surface-variant hover:text-royal-vibrant transition-colors" data-path="install" type="button">
+          <span class="material-symbols-outlined text-[22px]">install_mobile</span>
+          <span class="text-[11px] font-semibold">Install</span>
         </button>
       </div>
     </nav>
 
+  </div>
+
+  <!-- Universal PWA Install Modal (iOS, Android, In-App Browser Guide) -->
+  <div class="fixed inset-0 z-[120] bg-black/75 backdrop-blur-sm hidden items-end sm:items-center justify-center p-0 sm:p-4" id="install-modal" onclick="closeInstallModal(event)">
+    <div class="bg-surface-container-lowest w-full max-w-md rounded-t-3xl sm:rounded-3xl p-5 flex flex-col space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+      
+      <!-- Drag handle for mobile bottom sheet -->
+      <div class="w-12 h-1 bg-surface-container-highest rounded-full mx-auto sm:hidden"></div>
+      
+      <!-- Header with App Icon -->
+      <div class="flex items-center justify-between pb-2 border-b border-border-subtle">
+        <div class="flex items-center gap-3">
+          <img src="./assets/icons/icon-192.png" alt="Church Icon" class="w-12 h-12 rounded-2xl shadow-sm border border-slate-200/80 p-0.5 bg-water-mist"/>
+          <div class="flex flex-col">
+            <h3 class="font-headline font-extrabold text-[17px] text-text-primary leading-tight">Install Church App</h3>
+            <span class="text-[12px] text-text-muted">Chesterfield Community Church</span>
+          </div>
+        </div>
+        <button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-text-muted hover:text-text-primary active:scale-95" onclick="closeInstallModal()" type="button">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Device Tabs -->
+      <div class="flex rounded-xl bg-surface-container-low p-1 gap-1 text-xs font-semibold">
+        <button id="tab-btn-ios" onclick="switchInstallTab('ios')" class="flex-1 py-2 rounded-lg text-center transition-all bg-white text-sapphire-deep shadow-xs flex items-center justify-center gap-1.5" type="button">
+          <span class="text-sm">🍎</span>
+          <span>iPhone / iPad</span>
+        </button>
+        <button id="tab-btn-android" onclick="switchInstallTab('android')" class="flex-1 py-2 rounded-lg text-center transition-all text-text-secondary hover:text-text-primary flex items-center justify-center gap-1.5" type="button">
+          <span class="text-sm">🤖</span>
+          <span>Android / Chrome</span>
+        </button>
+      </div>
+
+      <!-- iOS Safari Instructions -->
+      <div id="install-guide-ios" class="space-y-3 pt-1">
+        <div class="bg-blue-50/80 border border-blue-200/80 rounded-2xl p-4 space-y-3.5">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-sapphire-deep text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">1</div>
+            <div class="flex flex-col">
+              <span class="text-[13px] font-bold text-text-primary">Tap the Share Button</span>
+              <p class="text-[12px] text-text-secondary leading-snug">In Safari, tap the <span class="inline-flex items-center font-bold text-sapphire-deep bg-white px-1.5 py-0.5 rounded border border-blue-200"><span class="material-symbols-outlined text-[16px] align-middle mr-0.5">ios_share</span> Share</span> icon at the bottom of your screen.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-sapphire-deep text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">2</div>
+            <div class="flex flex-col">
+              <span class="text-[13px] font-bold text-text-primary">Select "Add to Home Screen"</span>
+              <p class="text-[12px] text-text-secondary leading-snug">Scroll down in the menu options and tap <span class="inline-flex items-center font-bold text-sapphire-deep bg-white px-1.5 py-0.5 rounded border border-blue-200"><span class="material-symbols-outlined text-[16px] align-middle mr-0.5">add_box</span> Add to Home Screen</span>.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-sapphire-deep text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">3</div>
+            <div class="flex flex-col">
+              <span class="text-[13px] font-bold text-text-primary">Tap "Add"</span>
+              <p class="text-[12px] text-text-secondary leading-snug">Tap <strong>Add</strong> in the top-right corner. The church app icon will drop directly onto your home screen!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- In-App Browser Warning -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-2.5 text-[12px] text-amber-900 leading-snug">
+          <span class="material-symbols-outlined text-flame-amber text-[20px] shrink-0 mt-0.5">info</span>
+          <p><strong>Viewing inside a messaging app?</strong> If you opened this link from a text message or social app, tap the <span class="font-bold">Safari icon</span> or <span class="font-bold">•••</span> in the corner to <strong>Open in Safari</strong> first so you can add it to your home screen.</p>
+        </div>
+      </div>
+
+      <!-- Android / Chrome Instructions -->
+      <div id="install-guide-android" class="space-y-3 pt-1 hidden">
+        <div class="bg-emerald-50/80 border border-emerald-200/80 rounded-2xl p-4 space-y-3.5">
+          <button id="android-native-prompt-btn" onclick="triggerNativePrompt()" class="w-full py-3 bg-gradient-to-r from-sapphire-deep to-royal-vibrant text-white font-headline font-bold text-sm rounded-full shadow-md flex items-center justify-center gap-2 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[20px]">install_mobile</span>
+            <span>1-Tap Install App</span>
+          </button>
+
+          <div class="text-center text-xs text-text-muted font-medium py-0.5">— or through browser menu —</div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">1</div>
+            <div class="flex flex-col">
+              <span class="text-[13px] font-bold text-text-primary">Tap the 3-Dots Menu (⋮)</span>
+              <p class="text-[12px] text-text-secondary leading-snug">Tap the three vertical dots in the top right corner of Chrome.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">2</div>
+            <div class="flex flex-col">
+              <span class="text-[13px] font-bold text-text-primary">Tap "Install App" or "Add to Home Screen"</span>
+              <p class="text-[12px] text-text-secondary leading-snug">Select <strong>Install app</strong> or <strong>Add to Home screen</strong> and confirm.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-1">
+        <button onclick="closeInstallModal()" class="w-full py-3 rounded-full bg-surface-container-low hover:bg-slate-200 text-text-primary font-headline font-semibold text-xs active:scale-95 transition-all" type="button">
+          Got it, Close
+        </button>
+      </div>
+
+    </div>
   </div>
 
   <!-- Interactive Slide-Up Modal: Prayer Request -->
@@ -586,6 +726,32 @@
   </div>
 
   <script>
+    // Device & Standalone Mode Detection
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    // Check on startup
+    document.addEventListener('DOMContentLoaded', () => {
+      // If already installed, hide install banner card & update header button
+      if (isStandalone) {
+        const installCard = document.getElementById('mobile-install-card');
+        if (installCard) installCard.classList.add('hidden');
+        const headerBtn = document.getElementById('header-install-btn');
+        if (headerBtn) {
+          headerBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check_circle</span><span>Installed</span>';
+          headerBtn.classList.replace('text-sapphire-deep', 'text-emerald-700');
+          headerBtn.classList.replace('bg-water-mist', 'bg-emerald-50');
+        }
+      }
+
+      // Pre-select the appropriate device tab in the install modal
+      if (!isIOS) {
+        switchInstallTab('android');
+      } else {
+        switchInstallTab('ios');
+      }
+    });
+
     // Desktop Viewport Mode Toggle
     function setViewMode(mode) {
       const container = document.getElementById('app-container');
@@ -648,6 +814,66 @@
       closePrayerModal();
     }
 
+    // PWA Install Modal Handlers
+    function openInstallModal() {
+      // If native deferred prompt is available (e.g. Android Chrome), trigger it immediately
+      if (deferredPrompt) {
+        triggerNativePrompt();
+        return;
+      }
+      
+      const modal = document.getElementById('install-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeInstallModal(e) {
+      if (e && e.target && e.target.id !== 'install-modal') return;
+      const modal = document.getElementById('install-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function switchInstallTab(tab) {
+      const iosGuide = document.getElementById('install-guide-ios');
+      const androidGuide = document.getElementById('install-guide-android');
+      const iosBtn = document.getElementById('tab-btn-ios');
+      const androidBtn = document.getElementById('tab-btn-android');
+
+      if (tab === 'ios') {
+        iosGuide.classList.remove('hidden');
+        androidGuide.classList.add('hidden');
+        iosBtn.classList.add('bg-white', 'text-sapphire-deep', 'shadow-xs');
+        iosBtn.classList.remove('text-text-secondary');
+        androidBtn.classList.remove('bg-white', 'text-sapphire-deep', 'shadow-xs');
+        androidBtn.classList.add('text-text-secondary');
+      } else {
+        androidGuide.classList.remove('hidden');
+        iosGuide.classList.add('hidden');
+        androidBtn.classList.add('bg-white', 'text-sapphire-deep', 'shadow-xs');
+        androidBtn.classList.remove('text-text-secondary');
+        iosBtn.classList.remove('bg-white', 'text-sapphire-deep', 'shadow-xs');
+        iosBtn.classList.add('text-text-secondary');
+      }
+    }
+
+    function triggerNativePrompt() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choice) => {
+          if (choice.outcome === 'accepted') {
+            console.log('PWA installation accepted');
+            const installCard = document.getElementById('mobile-install-card');
+            if (installCard) installCard.classList.add('hidden');
+          }
+          deferredPrompt = null;
+          closeInstallModal();
+        });
+      } else {
+        alert("To install manually on Android:\n\nTap Chrome's 3-dots menu (⋮) in the top-right corner, then tap 'Install app' or 'Add to Home screen'.");
+      }
+    }
+
     function openVolunteerModal() {
       alert("Volunteer Schedules:\n\nGreeters, Nursery Staff, and Media Tech team schedules are updated monthly. To verify your rotation or volunteer, contact the Church Office at (765) 378-7685.");
     }
@@ -677,47 +903,39 @@
         scrollToElement('gathering-hero');
       } else if (tab === 'prayer') {
         openPrayerModal();
-      } else if (tab === 'more') {
-        scrollToElement('office-contact');
+      } else if (tab === 'install') {
+        openInstallModal();
       }
     }
 
     // PWA Service Worker Registration
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then(reg => console.log('SW registered:', reg.scope))
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+          .then(reg => {
+            console.log('SW registered with scope:', reg.scope);
+            reg.update(); // Check for updates immediately
+          })
           .catch(err => console.warn('SW registration error:', err));
       });
     }
 
-    // PWA Install Prompt
+    // PWA Native Install Prompt Event (Chrome / Edge / Android)
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      const installBtn = document.getElementById('header-install-btn');
-      if (installBtn) {
-        installBtn.classList.remove('hidden');
-        installBtn.classList.add('flex');
-      }
+      console.log('beforeinstallprompt captured!');
+      const nativePromptBtn = document.getElementById('android-native-prompt-btn');
+      if (nativePromptBtn) nativePromptBtn.classList.remove('hidden');
     });
 
-    function installPWA() {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choice) => {
-          if (choice.outcome === 'accepted') {
-            console.log('PWA installation accepted');
-          }
-          deferredPrompt = null;
-          const installBtn = document.getElementById('header-install-btn');
-          if (installBtn) installBtn.classList.add('hidden');
-        });
-      } else {
-        alert("To install this app on your device:\n\n• On iOS Safari: Tap the Share button, then 'Add to Home Screen'.\n• On Chrome/Edge: Click the install icon in the address bar or browser menu.");
-      }
-    }
+    window.addEventListener('appinstalled', () => {
+      console.log('Church PWA was installed successfully!');
+      deferredPrompt = null;
+      const installCard = document.getElementById('mobile-install-card');
+      if (installCard) installCard.classList.add('hidden');
+    });
   </script>
 </body>
 </html>

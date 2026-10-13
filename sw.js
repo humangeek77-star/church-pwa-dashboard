@@ -1,17 +1,18 @@
-const CACHE_NAME = 'ccc-pwa-v1';
+const CACHE_NAME = 'ccc-pwa-v2';
 const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
-  './manifest.json',
-  './favicon.png',
-  './assets/logo.png',
-  './assets/sanctuary.jpg',
-  './assets/kids.jpg',
-  './assets/groups.jpg',
-  './assets/map.jpg',
-  './assets/icons/icon-192.png',
-  './assets/icons/icon-512.png',
-  './assets/icons/apple-touch-icon.png'
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/favicon.png',
+  '/assets/logo.png',
+  '/assets/sanctuary.jpg',
+  '/assets/kids.jpg',
+  '/assets/groups.jpg',
+  '/assets/map.jpg',
+  '/assets/icons/icon-192.png',
+  '/assets/icons/icon-512.png',
+  '/assets/icons/icon-maskable-512.png',
+  '/assets/icons/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -58,7 +59,7 @@ self.addEventListener('fetch', (event) => {
         return response;
       }).catch(() => {
         if (event.request.destination === 'document') {
-          return caches.match('./index.html');
+          return caches.match('/index.html');
         }
       });
     })
