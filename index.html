@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/>
+<title>Chesterfield Community Church - PWA Dashboard</title>
+<meta name="description" content="Chesterfield Community Church PWA Dashboard - Sunday gatherings, ministries, prayer requests, and community fellowship."/>
+<link rel="manifest" href="./manifest.json"/>
+<meta name="theme-color" content="#00288e"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Church PWA"/>
+<link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" href="./favicon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-tint": "#3755c3", "on-secondary-container": "#fefcff", "secondary-fixed-dim": "#b4c5ff", "on-error-container": "#93000a", "on-tertiary-fixed": "#2a1700", "tertiary-container": "#6b4200", "secondary": "#0051d5", "tertiary-fixed": "#ffddb8", "primary": "#00288e", "text-secondary": "#475569", "secondary-container": "#316bf3", "secondary-fixed": "#dbe1ff", "surface": "#f7f9fb", "inverse-primary": "#b8c4ff", "primary-fixed-dim": "#b8c4ff", "error": "#ba1a1a", "flame-glow": "#FEF3C7", "live-indicator": "#EF4444", "error-container": "#ffdad6", "surface-container-low": "#f2f4f6", "on-primary-container": "#a8b8ff", "surface-container-highest": "#e0e3e5", "on-primary-fixed": "#001453", "on-primary-fixed-variant": "#173bab", "primary-container": "#1e40af", "tertiary": "#4c2e00", "surface-dim": "#d8dadc", "on-secondary": "#ffffff", "primary-fixed": "#dde1ff", "tertiary-fixed-dim": "#ffb95f", "on-surface": "#191c1e", "surface-card": "#FFFFFF", "surface-container-high": "#e6e8ea", "background": "#f7f9fb", "on-tertiary": "#ffffff", "border-subtle": "#E2E8F0", "on-primary": "#ffffff", "flame-amber": "#F59E0B", "on-background": "#191c1e", "surface-bright": "#f7f9fb", "royal-vibrant": "#2563EB", "flame-deep": "#D97706", "outline": "#757684", "on-surface-variant": "#444653", "text-primary": "#0F172A", "outline-variant": "#c4c5d5", "surface-container": "#eceef0", "surface-variant": "#e0e3e5", "text-muted": "#94A3B8", "water-mist": "#EFF6FF", "on-secondary-fixed-variant": "#003ea8", "on-secondary-fixed": "#00174b", "inverse-surface": "#2d3133", "on-tertiary-fixed-variant": "#653e00", "on-error": "#ffffff", "surface-container-lowest": "#ffffff", "inverse-on-surface": "#eff1f3", "sapphire-deep": "#1E40AF", "on-tertiary-container": "#ffa929" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-mobile": "0.75rem", "space-md": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter": "1rem", "margin": "1.25rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "space-2xl": "3rem", "space-xl": "2rem" }, "fontFamily": { "body-sm": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Inter"], "label-sm": ["Inter"], "label-lg": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-md": ["Inter"], "body-lg": ["Inter"] }, "fontSize": { "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }], "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "headline-sm": ["17px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-xl": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }], "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-full flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-1"><img alt="Chesterfield Community Church Logo" class="h-8 w-auto object-contain flex-shrink-0" src="./assets/logo.png"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-sapphire-deep text-[16px]">location_on</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-sapphire-deep truncate">Chesterfield, IN</span></div><span class="font-headline-sm text-headline-sm text-on-surface truncate">Home</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Notifications" class="relative w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary active:scale-95 transition-all" type="button"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2.5 h-2.5 bg-live-indicator rounded-full"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin-mobile space-y-space-md pb-space-lg">
+<!-- PWA Install Banner (displayed when install prompt is available) -->
+<div id="pwa-install-banner" class="hidden w-full bg-sapphire-deep text-on-primary rounded-xl p-space-sm flex items-center justify-between gap-space-sm shadow-md">
+  <div class="flex items-center gap-space-sm min-w-0">
+    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 text-white">
+      <span class="material-symbols-outlined text-[18px]">install_mobile</span>
+    </div>
+    <div class="flex flex-col min-w-0">
+      <span class="font-label-sm text-label-sm font-bold truncate">Install Church App</span>
+      <p class="font-body-sm text-body-sm text-white/80 text-[12px] truncate">Add to your home screen for quick access</p>
+    </div>
+  </div>
+  <button onclick="installPWA()" type="button" class="flex-shrink-0 bg-white text-sapphire-deep px-3 py-1 rounded-full font-label-sm text-label-sm font-bold shadow-sm active:scale-95 transition-transform">
+    Install
+  </button>
+</div>
+<!-- Urgent Weather / Worship Announcement Pill -->
+<div class="w-full bg-flame-glow rounded-xl p-space-sm flex items-center justify-between gap-space-sm shadow-sm active:scale-[0.99] transition-transform cursor-pointer" onclick="toggleAlertDetails()">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-flame-amber flex items-center justify-center flex-shrink-0 text-surface-card shadow-sm">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-flame-deep uppercase tracking-wider font-bold">Worship &amp; Event Updates</span>
+<p class="font-body-sm text-body-sm text-text-primary truncate">Sunday services proceed as scheduled. Check weather &amp; notices</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-flame-deep text-[20px] flex-shrink-0">arrow_forward</span>
+</div>
+<!-- Warm Community Welcome Banner -->
+<div class="relative w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm overflow-hidden">
+<div class="absolute -right-12 -top-12 w-44 h-44 rounded-full bg-water-mist opacity-80 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col space-y-space-xs">
+<div class="inline-flex items-center gap-space-xs bg-water-mist rounded-full px-space-sm py-0.5 w-fit">
+<span class="material-symbols-outlined text-sapphire-deep text-[15px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-sm text-label-sm text-sapphire-deep font-bold">A Place to Call Home</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-text-primary tracking-tight">
+        Welcome to Chesterfield Community Church
+      </h2>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed pt-space-xs">
+        Imagine a space where God's family makes room for you to connect in true friendship and explore your deepest faith questions.
+      </p>
+</div>
+</div>
+<!-- Featured Hero Widget: This Sunday's Service & Livestream -->
+<div class="w-full rounded-xl bg-surface-container-lowest shadow-md overflow-hidden flex flex-col" id="gathering-hero">
+<!-- Visual Sanctuary Header Card -->
+<div class="relative w-full h-44 bg-cover bg-center flex items-end p-space-md" data-alt="Chesterfield Community Church Sanctuary" style="background-image: url('./assets/sanctuary.jpg')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/50 to-transparent"></div>
+<!-- Live Indicator Badge -->
+<div class="absolute top-space-sm left-space-sm flex items-center gap-space-xs bg-surface-container-lowest/90 backdrop-blur-md rounded-full px-space-sm py-1 shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-live-indicator animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-text-primary uppercase tracking-wider font-bold">Sunday Gathering</span>
+</div>
+<!-- Livestream Quick Action -->
+<a class="absolute top-space-sm right-space-sm flex items-center gap-1 bg-surface-container-lowest/95 backdrop-blur-md text-error px-space-sm py-1 rounded-full shadow-sm active:scale-95 transition-transform text-label-sm font-label-sm" href="https://www.youtube.com/results?search_query=chesterfield+community+church+of+god+chesterfield+indiana" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span>YouTube</span>
+</a>
+<!-- Overlay Content -->
+<div class="relative z-10 text-on-primary">
+<span class="font-label-sm text-label-sm text-secondary-fixed uppercase tracking-wider">Join Us In-Person &amp; Online</span>
+<h3 class="font-headline-md text-headline-md font-bold leading-tight text-on-primary">Sunday Morning Fellowship</h3>
+</div>
+</div>
+<!-- Times & Service Details -->
+<div class="p-space-md flex flex-col space-y-space-md">
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-sapphire-deep font-bold">9:30 AM</span>
+<span class="font-headline-sm text-headline-sm text-text-primary">Bible Study</span>
+<span class="font-body-sm text-body-sm text-text-muted mt-0.5">Small Group Discussion</span>
+</div>
+<div class="bg-water-mist rounded-xl p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-royal-vibrant font-bold">10:30 AM</span>
+<span class="font-headline-sm text-headline-sm text-text-primary">Worship Service</span>
+<span class="font-body-sm text-body-sm text-text-muted mt-0.5">Music &amp; Daily Message</span>
+</div>
+</div>
+<!-- Kids & Nursery Comfort Note -->
+<div class="flex items-center gap-space-sm bg-surface-container-low rounded-lg p-space-sm">
+<span class="material-symbols-outlined text-flame-amber text-[20px] flex-shrink-0">family_restroom</span>
+<p class="font-body-sm text-body-sm text-text-secondary leading-snug">
+          Staffed nursery &amp; safe Discovery Kids classes provided during the 10:30 AM worship service.
+        </p>
+</div>
+<!-- Hero Call-to-Actions -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<a class="w-full bg-sapphire-deep text-on-primary py-3 rounded-full flex items-center justify-center gap-space-sm font-label-lg text-label-lg shadow-sm active:scale-[0.98] transition-transform" href="https://www.youtube.com/results?search_query=chesterfield+community+church+of+god+chesterfield+indiana" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">live_tv</span>
+<span>Watch Live on YouTube</span>
+</a>
+<a class="w-full bg-surface-container-lowest text-sapphire-deep py-3 rounded-full flex items-center justify-center gap-space-sm font-label-lg text-label-lg shadow-sm active:scale-[0.98] transition-transform" href="https://www.google.com/maps/place/123+Linden+Ln,+Chesterfield,+IN+46017" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">directions</span>
+<span>Directions: 123 Linden Ln</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Quick Action Hub (Touch Friendly Mobile Grid) -->
+<div class="w-full">
+<div class="flex items-center justify-between mb-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Church Hub</h3>
+<span class="font-label-sm text-label-sm text-text-muted uppercase tracking-wider">Quick Actions</span>
+</div>
+<div class="grid grid-cols-3 gap-space-sm">
+<!-- 1. Watch Live -->
+<a class="bg-surface-container-lowest rounded-xl p-space-sm flex flex-col items-center text-center shadow-sm active:scale-95 transition-transform" href="https://www.youtube.com/results?search_query=chesterfield+community+church+of+god+chesterfield+indiana" rel="noopener noreferrer" target="_blank">
+<div class="w-11 h-11 rounded-full bg-error-container text-error flex items-center justify-center mb-1.5">
+<span class="material-symbols-outlined text-[22px]">play_arrow</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary font-bold">Watch Live</span>
+<span class="font-label-sm text-label-sm text-text-muted">YouTube</span>
+</a>
+<!-- 2. Prayer Request -->
+<button class="bg-surface-container-lowest rounded-xl p-space-sm flex flex-col items-center text-center shadow-sm active:scale-95 transition-transform" onclick="openPrayerModal()" type="button">
+<div class="w-11 h-11 rounded-full bg-flame-glow text-flame-deep flex items-center justify-center mb-1.5">
+<span class="material-symbols-outlined text-[22px]">favorite</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary font-bold">Prayer</span>
+<span class="font-label-sm text-label-sm text-text-muted">Request</span>
+</button>
+<!-- 3. Directory -->
+<a class="bg-surface-container-lowest rounded-xl p-space-sm flex flex-col items-center text-center shadow-sm active:scale-95 transition-transform" href="https://members.instantchurchdirectory.com/" rel="noopener noreferrer" target="_blank">
+<div class="w-11 h-11 rounded-full bg-water-mist text-royal-vibrant flex items-center justify-center mb-1.5">
+<span class="material-symbols-outlined text-[22px]">import_contacts</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary font-bold">Directory</span>
+<span class="font-label-sm text-label-sm text-text-muted">Members</span>
+</a>
+<!-- 4. Kids / Youth -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm flex flex-col items-center text-center shadow-sm active:scale-95 transition-transform cursor-pointer" onclick="scrollToElement('ministry-kids')">
+<div class="w-11 h-11 rounded-full bg-flame-glow text-flame-amber flex items-center justify-center mb-1.5">
+<span class="material-symbols-outlined text-[22px]">mood</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary font-bold">Kids Class</span>
+<span class="font-label-sm text-label-sm text-text-muted">Discovery</span>
+</div>
+<!-- 5. Volunteer -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm flex flex-col items-center text-center shadow-sm active:scale-95 transition-transform cursor-pointer" onclick="openVolunteerModal()">
+<div class="w-11 h-11 rounded-full bg-surface-container-low text-sapphire-deep flex items-center justify-center mb-1.5">
+<span class="material-symbols-outlined text-[22px]">event_available</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary font-bold">Volunteer</span>
+<span class="font-label-sm text-label-sm text-text-muted">Schedules</span>
+</div>
+<!-- 6. Connect Groups -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm flex flex-col items-center text-center shadow-sm active:scale-95 transition-transform cursor-pointer" onclick="scrollToElement('ministry-connect')">
+<div class="w-11 h-11 rounded-full bg-surface-container-low text-text-secondary flex items-center justify-center mb-1.5">
+<span class="material-symbols-outlined text-[22px]">groups</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary font-bold">Connect</span>
+<span class="font-label-sm text-label-sm text-text-muted">Fellowship</span>
+</div>
+</div>
+</div>
+<!-- Warm Flame Accent Card: Need Prayer Today? -->
+<div class="w-full rounded-xl bg-gradient-to-r from-flame-amber to-flame-deep p-space-md text-surface-card shadow-md flex items-center justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-flame-glow font-bold">Confidential Support</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-surface-card">Need Prayer Today?</h3>
+<p class="font-body-sm text-body-sm text-flame-glow/90 pt-0.5 line-clamp-2">Our pastoral team and prayer chain hold requests in faithful care.</p>
+</div>
+<button class="flex-shrink-0 bg-surface-card text-flame-deep px-space-md py-2.5 rounded-full font-label-md text-label-md shadow-sm active:scale-95 transition-all" onclick="openPrayerModal()" type="button">
+      Send
+    </button>
+</div>
+<!-- Connection & Community Ministries Highlights -->
+<div class="w-full space-y-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Ministries &amp; Community</h3>
+<span class="font-label-sm text-label-sm text-royal-vibrant font-semibold">Explore All</span>
+</div>
+<!-- Ministry Card 1: Discovery Kids -->
+<div class="w-full bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col" id="ministry-kids">
+<div class="relative w-full h-32 bg-cover bg-center" data-alt="Joyful children engaged in Sunday school" style="background-image: url('./assets/kids.jpg')">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-space-sm left-space-sm right-space-sm flex items-center justify-between text-surface-card">
+<span class="font-headline-sm text-headline-sm font-bold">Discovery Kids!</span>
+<span class="font-label-sm text-label-sm bg-flame-amber text-surface-card px-2 py-0.5 rounded-full font-bold">Nursery &amp; Classes</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col space-y-space-xs">
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+          A loving staffed Nursery and engaging Children's Class are offered every Sunday morning during 10:30 AM worship. Your kids will discover God's love in a secure, fun environment.
+        </p>
+<div class="pt-space-xs flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-text-muted">Ages 0 - 5th Grade</span>
+<button class="text-royal-vibrant font-label-md text-label-md flex items-center gap-1 hover:underline" type="button">
+<span>Learn More</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Ministry Card 2: Connect Groups & Fellowship -->
+<div class="w-full bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col" id="ministry-connect">
+<div class="relative w-full h-32 bg-cover bg-center" data-alt="Fellowship and small groups" style="background-image: url('./assets/groups.jpg')">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-space-sm left-space-sm right-space-sm flex items-center justify-between text-surface-card">
+<span class="font-headline-sm text-headline-sm font-bold">Small Groups &amp; Connect</span>
+<span class="font-label-sm text-label-sm bg-sapphire-deep text-on-primary px-2 py-0.5 rounded-full font-bold">Fellowship</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col space-y-space-xs">
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+          Through a variety of opportunities from which to choose, you can connect and grow in your spiritual life, social interaction, and lasting friendships.
+        </p>
+<div class="pt-space-xs flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-text-muted">Sundays 9:30 AM &amp; Midweek</span>
+<button class="text-royal-vibrant font-label-md text-label-md flex items-center gap-1 hover:underline" type="button">
+<span>Discover More</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Ministry Card 3: Seasonal Events / FallThanksMas -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex items-start gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-flame-glow flex items-center justify-center flex-shrink-0 text-flame-deep">
+<span class="material-symbols-outlined text-[28px]">celebration</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-headline-sm text-text-primary">Seasonal Fellowship</h4>
+<span class="font-label-sm text-label-sm bg-surface-container-low text-text-secondary px-2 py-0.5 rounded-full">Community</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary leading-snug">
+          Join our seasonal gatherings like FallThanksMas kick-offs, holiday games, crafts, brown bag luncheons, and community outreach.
+        </p>
+</div>
+</div>
+</div>
+<!-- Interactive Map & Visit Information Widget -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col space-y-space-sm" id="map-widget">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-sapphire-deep text-[20px]">pin_drop</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Find Our Church</h3>
+</div>
+<span class="font-label-sm text-label-sm text-sapphire-deep font-bold">Chesterfield, IN</span>
+</div>
+<!-- Map Trigger Container -->
+<div class="w-full h-36 bg-cover bg-center rounded-xl overflow-hidden relative shadow-inner cursor-pointer" data-location="123 Linden Ln, Chesterfield, IN 46017" onclick="window.open('https://www.google.com/maps/place/123+Linden+Ln,+Chesterfield,+IN+46017', '_blank')" style="background-image: url('./assets/map.jpg')">
+<div class="absolute inset-0 bg-primary/20 backdrop-brightness-95 flex items-center justify-center">
+<div class="bg-surface-container-lowest px-space-md py-1.5 rounded-full shadow-md flex items-center gap-space-xs text-text-primary">
+<span class="material-symbols-outlined text-error text-[20px]">location_on</span>
+<span class="font-label-md text-label-md font-bold">Open in Google Maps</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col space-y-1 pt-space-xs">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-text-muted text-[18px] mt-0.5">home</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-text-primary">123 Linden Lane</span>
+<span class="font-body-sm text-body-sm text-text-muted">Corner of Main St &amp; Linden Ln, Chesterfield, IN 46017</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Church Office Hours & Direct Contact Card -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Contact &amp; Office Hours</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">We would love to hear from you and answer any questions.</p>
+</div>
+<!-- Office Schedule Rows -->
+<div class="bg-surface-container-low rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-text-secondary font-medium">Monday – Wednesday</span>
+<span class="text-text-primary font-bold">9:00 AM – 1:00 PM</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-text-secondary font-medium">Thursday</span>
+<span class="text-text-primary font-bold">9:00 AM – 12:00 PM (Noon)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-text-secondary font-medium">Friday – Saturday</span>
+<span class="text-text-muted">Office Closed / Pastoral On-call</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-text-secondary font-medium">Sunday</span>
+<span class="text-royal-vibrant font-bold">Worship 9:30 &amp; 10:30 AM</span>
+</div>
+</div>
+<!-- Quick Communication Action Buttons -->
+<div class="grid grid-cols-2 gap-space-sm">
+<a class="bg-water-mist text-sapphire-deep py-2.5 px-space-sm rounded-xl flex items-center justify-center gap-space-xs font-label-md text-label-md active:scale-95 transition-transform" href="tel:7653787685">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>(765) 378-7685</span>
+</a>
+<a class="bg-surface-container-low text-text-primary py-2.5 px-space-sm rounded-xl flex items-center justify-center gap-space-xs font-label-md text-label-md active:scale-95 transition-transform truncate" href="mailto:chesterfieldcommunitycog@gmail.com">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>Email Church</span>
+</a>
+</div>
+<!-- Social Channels -->
+<div class="pt-space-xs flex items-center justify-center gap-space-md">
+<a class="flex items-center gap-1.5 text-text-secondary hover:text-sapphire-deep font-label-sm text-label-sm" href="https://www.facebook.com/chesterfieldcommunitychog" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px] text-sapphire-deep">share</span>
+<span>Facebook Page</span>
+</a>
+<span class="text-text-muted">•</span>
+<a class="flex items-center gap-1.5 text-text-secondary hover:text-error font-label-sm text-label-sm" href="https://www.youtube.com/results?search_query=chesterfield+community+church+of+god+chesterfield+indiana" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px] text-error">subscriptions</span>
+<span>YouTube Channel</span>
+</a>
+</div>
+</div>
+<!-- Footer Legal Copyright -->
+<div class="w-full text-center py-space-sm">
+<p class="font-label-sm text-label-sm text-text-muted">
+      © 2024 Chesterfield Community Church of God. All rights reserved.
+    </p>
+</div>
+<!-- Interactive Slide-Up Modal: Prayer Request -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-end justify-center p-0" id="prayer-modal" onclick="handleBackdropClick(event)">
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-t-2xl p-space-md flex flex-col space-y-space-md shadow-2xl max-h-[795px] overflow-y-auto" onclick="event.stopPropagation()">
+<!-- Grab Bar -->
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full mx-auto"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-flame-deep text-[24px]">favorite</span>
+<h3 class="font-headline-md text-headline-md text-text-primary">Submit Prayer Request</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-text-muted hover:text-text-primary" onclick="closePrayerModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">
+        Share your needs with our Pastoral Team and Prayer Ministry. Please indicate if you would like this kept confidential.
+      </p>
+<form class="space-y-space-sm" id="prayer-form" onsubmit="submitPrayerRequest(event)">
+<div>
+<label class="block font-label-sm text-label-sm text-text-primary mb-1">Your Name (Optional)</label>
+<input class="w-full h-11 px-space-sm rounded-xl bg-surface-container-low text-text-primary placeholder:text-text-muted focus:outline-none focus:bg-surface-container-lowest font-body-sm" placeholder="First and last name" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-text-primary mb-1">Prayer Need *</label>
+<textarea class="w-full p-space-sm rounded-xl bg-surface-container-low text-text-primary placeholder:text-text-muted focus:outline-none focus:bg-surface-container-lowest font-body-sm" placeholder="How can we pray for you today?" required="" rows="3"></textarea>
+</div>
+<div class="flex items-center gap-space-sm pt-1">
+<input class="rounded text-sapphire-deep w-4 h-4" id="confidential-check" type="checkbox"/>
+<label class="font-label-sm text-label-sm text-text-secondary cursor-pointer" for="confidential-check">
+            Keep this request confidential with Pastor only
+          </label>
+</div>
+<div class="pt-space-sm">
+<button class="w-full bg-sapphire-deep text-on-primary py-3 rounded-full font-label-lg text-label-lg active:scale-95 transition-transform flex items-center justify-center gap-space-xs" type="submit">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Send Prayer Request</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script>
+  function scrollToElement(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  function toggleAlertDetails() {
+    alert("Chesterfield Community Church Bulletin:\n\n• Sunday Services: In-person at 9:30 AM & 10:30 AM.\n• YouTube Live streaming every Sunday at 10:30 AM.\n• In case of severe winter weather cancellations, announcements will be posted directly here and on Facebook.");
+  }
+
+  function openPrayerModal() {
+    const modal = document.getElementById('prayer-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closePrayerModal() {
+    const modal = document.getElementById('prayer-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  function handleBackdropClick(event) {
+    closePrayerModal();
+  }
+
+  function openVolunteerModal() {
+    alert("Volunteer Schedules:\n\nGreeters, Nursery Staff, and Media Tech team schedules are updated monthly. To sign up or verify your rotation, contact the Church Office at (765) 378-7685.");
+  }
+
+  function submitPrayerRequest(e) {
+    e.preventDefault();
+    alert("Thank you. Your prayer request has been shared with our prayer team. We are standing with you in faith.");
+    closePrayerModal();
+  }
+
+  function setActiveTab(tab) {
+    document.querySelectorAll('.nav-tab').forEach(btn => {
+      if (btn.getAttribute('data-path') === tab) {
+        btn.classList.add('text-royal-vibrant');
+        btn.classList.remove('text-on-surface-variant');
+      } else {
+        btn.classList.remove('text-royal-vibrant');
+        btn.classList.add('text-on-surface-variant');
+      }
+    });
+
+    if (tab === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (tab === 'connect') {
+      scrollToElement('ministry-connect');
+    } else if (tab === 'watch') {
+      scrollToElement('gathering-hero');
+    } else if (tab === 'prayer') {
+      openPrayerModal();
+    } else if (tab === 'more') {
+      scrollToElement('map-widget');
+    }
+  }
+
+  // Register PWA Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registered with scope:', reg.scope))
+        .catch(err => console.warn('Service Worker registration failed:', err));
+    });
+  }
+
+  // PWA Install prompt handling
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const installBanner = document.getElementById('pwa-install-banner');
+    if (installBanner) installBanner.classList.remove('hidden');
+  });
+
+  function installPWA() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted PWA install');
+        }
+        deferredPrompt = null;
+        const installBanner = document.getElementById('pwa-install-banner');
+        if (installBanner) installBanner.classList.add('hidden');
+      });
+    }
+  }
+</script></main>
+
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(15,23,42,0.04)]">
+  <div class="flex justify-around items-center h-16 px-space-xs">
+    <button aria-label="Home" onclick="setActiveTab('home')" class="nav-tab flex flex-col items-center justify-center gap-space-xs min-w-[56px] h-full transition-colors text-royal-vibrant" data-path="home" type="button">
+      <span class="material-symbols-outlined text-[24px]">home</span>
+      <span class="font-label-sm text-label-sm">Home</span>
+    </button>
+    <button aria-label="Connect" onclick="setActiveTab('connect')" class="nav-tab flex flex-col items-center justify-center gap-space-xs min-w-[56px] h-full text-on-surface-variant hover:text-royal-vibrant transition-colors" data-path="connect" type="button">
+      <span class="material-symbols-outlined text-[24px]">group</span>
+      <span class="font-label-sm text-label-sm">Connect</span>
+    </button>
+    <button aria-label="Watch" onclick="setActiveTab('watch')" class="nav-tab flex flex-col items-center justify-center gap-space-xs min-w-[56px] h-full text-on-surface-variant hover:text-royal-vibrant transition-colors" data-path="watch" type="button">
+      <span class="material-symbols-outlined text-[24px]">live_tv</span>
+      <span class="font-label-sm text-label-sm">Watch</span>
+    </button>
+    <button aria-label="Prayer" onclick="setActiveTab('prayer')" class="nav-tab flex flex-col items-center justify-center gap-space-xs min-w-[56px] h-full text-on-surface-variant hover:text-royal-vibrant transition-colors" data-path="prayer" type="button">
+      <span class="material-symbols-outlined text-[24px]">favorite</span>
+      <span class="font-label-sm text-label-sm">Prayer</span>
+    </button>
+    <button aria-label="More" onclick="setActiveTab('more')" class="nav-tab flex flex-col items-center justify-center gap-space-xs min-w-[56px] h-full text-on-surface-variant hover:text-royal-vibrant transition-colors" data-path="more" type="button">
+      <span class="material-symbols-outlined text-[24px]">menu</span>
+      <span class="font-label-sm text-label-sm">More</span>
+    </button>
+  </div>
+</nav>
+</body></html>

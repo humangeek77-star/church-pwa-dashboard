@@ -1,0 +1,21 @@
+{
+  "name": "church-pwa-dashboard",
+  "version": "1.0.0",
+  "description": "Chesterfield Community Church - Mobile PWA Dashboard",
+  "scripts": {
+    "start": "npx serve .",
+    "deploy": "npx wrangler pages deploy . --project-name=church-pwa-dashboard",
+    "deploy:ci": "npx wrangler pages deploy . --project-name=church-pwa-dashboard --commit-dirty=true"
+  },
+  "keywords": [
+    "pwa",
+    "church",
+    "dashboard",
+    "cloudflare-pages"
+  ],
+  "author": "humangeek77-star",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^4.86.0"
+  }
+}
