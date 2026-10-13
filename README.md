@@ -2,6 +2,9 @@
 
 A mobile-first Progressive Web App (PWA) dashboard created from the **Living Grace Sanctuary** design system in Google Stitch.
 
+🌐 **Live Production App:** [https://church-pwa-dashboard.pages.dev](https://church-pwa-dashboard.pages.dev)  
+📦 **GitHub Repository:** [https://github.com/humangeek77-star/church-pwa-dashboard](https://github.com/humangeek77-star/church-pwa-dashboard)
+
 ---
 
 ## 📱 Features
